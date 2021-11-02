@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Challenge Abraham Movies DH</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Movies Abraham DH</h1>
+    <p>LISTADO DE PELICULAS</p>
+    <br>
+    <ul>
+      <% for( let i = 0; i < movies.length; i++ ) { %>
+      <li>
+          <a href="/detail/<%= movies[i].id %>"><%= movies[i].title %> - <%= movies[i].genero.name %></a>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>

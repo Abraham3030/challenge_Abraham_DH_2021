@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Challenge Abraham Movies DH</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+      </head>
+    <body>
+        <h1><%= movie.title %> </h1>    
+        <br>
+        <p>Rating: <%= movie.rating %> </p>
+        <p>Premios: <%= movie.awards %> </p>
+        <p>Duración: <%= movie.length + ' min'%> </p>
+        <p>Fecha de estreno: <%= movie.release_date %> </p>
+        <p>Genero: <%= movie.genero.name %></p>
+        
+        <br>
+        <section>
+            <a href="/">Regresar</a>
+            <!--Aquí debe colocar los botones de Modificar - Borrar y Listado de Películas-->
+            <a href="/edit/<%= movie.id %> ">Modificar</a>
+        </section>
+</body>
+</html>
