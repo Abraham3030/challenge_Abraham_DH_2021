@@ -1,10 +1,5 @@
-/** Relaciones
-- Una pelicula tiene un genero
-- Una pelicula tiene muchos actores
-*/
-
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Movie'; // esto debería estar en singular
+    let alias = 'Movie';
     let cols = {
         id: {
             type: dataTypes.BIGINT(10).UNSIGNED,
@@ -41,8 +36,6 @@ module.exports = (sequelize, dataTypes) => {
         tableName: 'movies'
     }
     const Movie = sequelize.define(alias,cols,config);
-
-    //Aquí debes realizar lo necesario para crear las relaciones con los otros modelos (Genre - Actor)
 
     Movie.associate = function(models) {
         Movie.belongsTo(models.Genre, {

@@ -11,27 +11,26 @@ const Actors = db.Actor;
 
 const indexController = {
     index: (req, res) => {
-        Movies.findAll({
-            include:[{
-                association: 'genero',
-                required: true
-            }]
-        })
+        Movies.findAll()
             .then(movies => {
                 res.render('index.ejs', {movies})
             })
     },
     detail: (req, res) => {
-        Movies.findByPk(req.params.id, 
-            {
-                include:[{
+        db.Movie.findByPk(req.params.id, {
+            include:[
+                {
                     association: 'genero',
                     required: true
-                }]
-            })
-            .then(movie => {
-                res.render('moviesDetail.ejs', {movie});
-            });
+                },
+                {
+                    association: 'actores'
+                }
+        ]
+        })
+        .then(movie => {
+            res.render('moviesDetail.ejs', {movie});
+        });
     },
     //Metodos para las rutas del CRUD
     add: function (req, res, next) {
@@ -75,11 +74,11 @@ const indexController = {
         res.redirect('/')
     },
     destroy: async function (req, res) {
-        await Movies.destroy({
+        await db.Movie.destroy({
             where: {id: req.params.id}
         })
-        res.redirect('/')
-    }
+        res.redirect('/');
+      }
 }
 
 module.exports = indexController;

@@ -27,11 +27,9 @@ module.exports = (sequelize, dataTypes) => {
         createdAt: 'created_at',
         updatedAt: 'updated_at',
         tableName: 'genres',
-        deletedAt: false
+        deletedAt: false,
     }
     const Genre = sequelize.define(alias, cols, config);
-
-    //Aquí debes realizar lo necesario para crear las relaciones con el modelo (Movie)
 
     Genre.associate = function(models) {
         Genre.hasMany(models.Movie, {

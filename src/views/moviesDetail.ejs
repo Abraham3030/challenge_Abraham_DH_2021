@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <title>Challenge Abraham Movies DH</title>
         <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -12,11 +12,19 @@
         <p>Duración: <%= movie.length + ' min'%> </p>
         <p>Fecha de estreno: <%= movie.release_date %> </p>
         <p>Genero: <%= movie.genero.name %></p>
+        <p>Actores: </p>
+        <ul>
+            <% for( let i = 0; i < movie.actores.length; i++ ) { %>
+            <li>
+                <p><%= movie.actores[i].first_name%> <%= movie.actores[i].last_name%></p>
+            </li>
+            <% } %>
+          </ul>   
         <br>
         <section>
             <a href="/edit/<%= movie.id %> ">Modificar</a>
             <a href="/delete/<%= movie.id %> ">Eliminar</a>
         </section>
-        <a href="/">Regresar</a>
+        <a href="/">Lista de Peliculas</a>
     </body>
 </html>

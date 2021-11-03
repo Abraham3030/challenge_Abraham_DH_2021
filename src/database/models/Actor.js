@@ -4,6 +4,7 @@ module.exports = (sequelize, dataTypes) => {
         id: {
             type: dataTypes.BIGINT(10).UNSIGNED,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
         // created_at: dataTypes.TIMESTAMP,
@@ -26,7 +27,9 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAt: false
+        tableName: 'actors',
+        deletedAt: false,
+        
     }
     const Actor = sequelize.define(alias, cols, config); 
 

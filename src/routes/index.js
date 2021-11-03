@@ -13,5 +13,4 @@ router.get('/edit/:id', indexController.edit);
 router.post('/update/:id', indexController.update);
 router.get('/delete/:id', indexController.destroy);
 
-
 module.exports = router;
