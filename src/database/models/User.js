@@ -22,9 +22,9 @@ module.exports = function(sequelize, dataTypes) {
         // remember_token: dataTypes.STRING(255),
         // created_at: dataTypes.TIMESTAMP,
         // updated_at: dataTypes.TIMESTAMP,
-        rol: {
-            type: dataTypes.TINYINT(4),
-        }
+        // rol: {
+        //     type: dataTypes.TINYINT(4),
+        // }
     }
 
     let config = {

@@ -16,6 +16,7 @@ const indexController = {
                 res.render('index.ejs', {movies})
             })
     },
+    // Metodo ver peliculas 
     detail: (req, res) => {
         db.Movie.findByPk(req.params.id, {
             include:[
@@ -32,7 +33,7 @@ const indexController = {
             res.render('moviesDetail.ejs', {movie});
         });
     },
-    //Metodos para las rutas del CRUD
+    // Metodos para las rutas del CRUD
     add: function (req, res, next) {
         Genres.findAll()
         .then(genres => {
@@ -78,7 +79,15 @@ const indexController = {
             where: {id: req.params.id}
         })
         res.redirect('/');
-      }
+    },
+
+    ////// Proceso de registro y logueo
+    register: (req, res) => {
+        res.render('register.ejs')
+    },
+    login: (req, res) => {
+        res.render('login.ejs')
+    },
 }
 
 module.exports = indexController;
