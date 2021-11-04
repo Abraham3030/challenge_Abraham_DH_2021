@@ -2,10 +2,10 @@ module.exports = function(sequelize, dataTypes) {
     let alias = "User";
     let cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.BIGINT(10).UNSIGNED,
             primaryKey: true,
             allowNull: false,
-            autoIncement: true
+            autoIncrement: true
         },
         name: {
             type: dataTypes.STRING(255),
@@ -35,6 +35,6 @@ module.exports = function(sequelize, dataTypes) {
         tableName: "users"
     }
 
-    const User = sequelize.define(alias, cols, config);
+    let User = sequelize.define(alias, cols, config);
     return User;
 }

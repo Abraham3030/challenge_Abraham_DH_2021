@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <title>Challenge Abraham Movies DH</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'>
-</head>
-<body>
-    <div class="contenedor-general">
-        <header>                
-            <div>            
-            <a href="/">Regresar</a>
-            </div>                                
-        </header>
-        <div>
-            <div>
-                <div>
-                    <a href="/login"><p>Iniciar Sesion</p></a>
-                </div>
-                <div class="marco">
-                    <p>Crear Cuenta</p>
-                </div>
-            </div>
-            <section>
-                <form action="/register" method="POST">
-                    <label for="name">Name</label>
-                    <p><input type="text" name="name" id="" required></p>
-                    <label for="email">Email</label>
-                    <p><input type="email" name="email" id="" required> </p>
-                    <label for="password">Password</label>
-                    <p><input type="password" name="password" id="" required></p>
-                    <br>
-                    <p> 
-                        <button type="submit">Registrar</button> 
-                    </p>
-                </form>
-            </section>
-        </div>
-    </div>
-</body>
+    <head>
+        <title>Challenge Abraham Movies DH</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <style>
+        .text-danger{
+            color: red;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Registrar Usuario</h1>
+        <br>
+        <section>
+            <form action="/user/register" method="POST">
+                <label for="name">Nombre </label>
+                <p><input type="text" name="name" id="" required></p>
+                <% if(locals.errors && errors.name) {%>
+                    <div class="text-danger">
+                        <%= errors.name.msg %>
+                    </div>
+                <% } %>
+                <label for="email">Correo </label>
+                <p><input type="email" name="email" id="" required> </p>
+                <% if(locals.errors && errors.email) {%>
+                    <div class="text-danger">
+                        <%= errors.email.msg %>
+                    </div>
+                <% } %>
+                <label for="password">Contraseña </label>
+                <p><input type="password" name="password" id="" required></p>
+                <% if(locals.errors && errors.password) {%>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>
+                <br>
+                <p> 
+                    <button type="submit">Registrar</button> 
+                </p>
+                <a href="/">Regresar</a>
+            </form>
+        </section>
+    </body>
 </html>

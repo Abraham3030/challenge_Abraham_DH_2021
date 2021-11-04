@@ -79,15 +79,7 @@ const indexController = {
             where: {id: req.params.id}
         })
         res.redirect('/');
-    },
-
-    ////// Proceso de registro y logueo
-    register: (req, res) => {
-        res.render('register.ejs')
-    },
-    login: (req, res) => {
-        res.render('login.ejs')
-    },
+    }
 }
 
 module.exports = indexController;

@@ -1,25 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const usersController = require('../controllers/usersController');
+// Importacion del controlador index
+const userController = require('../controllers/userController');
+const validations = require('../middlewares/validateRegisterMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
-// Coniguracion de login y logout
-// Iniciar sesion de usuario
-router.get('/login', usersController.login);
-// Procesar informacion
-router.post('/login', usersController.loginProcess);
-// users Logout
-router.get('/logout', usersController.logout);
-
-// 2. Formulario de creación de usuario
-// Crear Usuario/ Obtener información con fromulario
-router.get('/register', usersController.create);
-// 4.Procesar formulario de usuarios
-router.post('/register', usersController.store);
-
-// 3. Detalle de un usuario particular
-// Obtener un Usuario/ Detalle de usuario
-router.get('/:id', usersController.userProfile);
-// Fin obtener un Usuario
+//Rutas necesarias para crear usuario
+router.get('/register', userController.add);
+router.post('/register', validations, userController.create)
+router.get('/login',  userController.login);
+router.post('/login', userController.loginProcess);
+router.get('/logout', authMiddleware, userController.logout);
 
 module.exports = router;
